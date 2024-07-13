@@ -74,3 +74,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# Manually Added Gems
+gem "devise"

@@ -7,3 +7,15 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+# Seeding listings for use in the index
+
+20.times do
+  Listing.create(
+    user_id: 1,
+    title: Faker::Book.title,
+    description: Faker::Lorem.paragraph_by_chars(number: 50, supplemental: false),
+    fee: Faker::Number.decimal(l_digits: 2),
+    location: Faker::Address.full_address
+  )
+end

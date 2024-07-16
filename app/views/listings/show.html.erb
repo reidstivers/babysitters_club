@@ -3,3 +3,14 @@
   <%= @listing.description%>
   <%= @listing.fee%>
 </div>
+
+
+<%= simple_form_for [@listing, @booking] do |f| %>
+  <%= f.input :start_at %>
+  <%= f.input :end_at %>
+  <%= f.submit %>
+<% end %>
+
+<% @bookings.each do |booking|%>
+<%= booking.id %>
+<% end %>

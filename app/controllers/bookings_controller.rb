@@ -1,27 +1,22 @@
 class BookingsController < ApplicationController
   def new
     @booking = Booking.new
-    @user = User.find(params[:user_id])
+    @booking.user = current_user
     @listing = Listing.find(params[:listing_id])
   end
-
+  
   def create
     @booking = Booking.new(booking_params)
-    @user = User.find(params[:user_id])
-    @booking.user = @user
-    @listing = Listing.find(params[:listing_id])
-    @booking.listing = @listing
-
+    @booking.listing_id = params[:listing_id]
+    @booking.user = current_user
     if @booking.save
-      redirect_to booking_path(@booking)
-    else
+      redirect_to listing_path(params[:listing_id])
+          else
       render :new, status: :unprocessable_entity
     end
   end
-
-  private
-
+private
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :notes)
+    params.require(:booking).permit(:start_at, :end_at)
   end
 end

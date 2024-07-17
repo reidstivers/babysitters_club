@@ -1,10 +1,14 @@
 class BookingsController < ApplicationController
+
+  def index
+    @bookings = Booking.all
+  end
   def new
     @booking = Booking.new
     @booking.user = current_user
     @listing = Listing.find(params[:listing_id])
   end
-  
+
   def create
     @booking = Booking.new(booking_params)
     @booking.listing_id = params[:listing_id]

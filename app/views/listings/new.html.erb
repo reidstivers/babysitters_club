@@ -1,0 +1,9 @@
+<h1>This is a New Listing</h1>
+
+<%= simple_form_for [@listing] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :location %>
+  <%= f.input :fee %>
+  <%= f.submit %>
+<% end %>

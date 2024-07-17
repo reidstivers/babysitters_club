@@ -3,11 +3,14 @@
 
 <%# <%= link_to "Log Out", destroy_user_session_path, data: { turbo_method: :delete } %>
 <%# <%= link_to "Sign_up", new_user_registration_path %>
-
-<% @listings.each do |listing| %>
-  <%= listing.title %>
-  <%= listing.description %>
-  <%= listing.fee %>
-  <%= listing.user_id %>
-  <%= link_to "Check the detail", listing_path(listing) %>
-<% end %>
+<ul>
+  <% @listings.each do |listing| %>
+    <li class="card">
+      <h5> <%= listing.title %> <h5>
+      <p> <%= listing.description %> </p>
+      <p> <%= listing.fee %> </p>
+      <p> <%= User.find_by_id(listing.user_id).first_name %> <%= User.find_by_id(listing.user_id).last_name %> </p>
+      <p> <%= link_to "Check the details", listing_path(listing) %> </p>
+    </li>
+  <% end %>
+</ul>

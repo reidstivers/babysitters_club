@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
+
   def index
     @listings = Listing.all
   end
@@ -23,6 +24,7 @@ class ListingsController < ApplicationController
   end
 
 private
+
   def listing_params
     params.require(:listing).permit(:title, :description, :fee, :location)
   end

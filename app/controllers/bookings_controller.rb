@@ -3,6 +3,7 @@ class BookingsController < ApplicationController
   def index
     @bookings = Booking.all
   end
+
   def new
     @booking = Booking.new
     @booking.user = current_user
@@ -19,7 +20,9 @@ class BookingsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
 private
+
   def booking_params
     params.require(:booking).permit(:start_at, :end_at)
   end

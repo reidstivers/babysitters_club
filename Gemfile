@@ -78,3 +78,4 @@ end
 # Manually Added Gems
 gem "devise"
 gem "faker"
+gem "validates_timeliness", '~> 7.0.0.beta1'

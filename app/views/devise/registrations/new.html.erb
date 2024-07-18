@@ -16,6 +16,11 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "Last Name" }%>
+    <%= f.input :photo,
+                as: :file,
+                hint: "leave it blank if you don't want to change it",
+                required: false,
+                input_html: { accept: "image/*" } %>
      <%= f.input :location,
                 required: true,
                 autofocus: true,

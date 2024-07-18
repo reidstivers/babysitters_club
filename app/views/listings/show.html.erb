@@ -1,7 +1,13 @@
+<%= link_to "Back to Listings", root_path %>
 <h1><%= @listing.title%></h1>
-<div>
-  <%= @listing.description%>
-  <%= @listing.fee%>
+<div class="d-flex">
+  <div>
+    <%= @listing.description%>
+    <%= @listing.fee%>
+  </div>
+  <div class="card"><% @listing.photos.each do |photo| %>
+        <%= image_tag photo %></div>
+  <% end %>
 </div>
 
 

@@ -13,11 +13,12 @@ class ListingsController < ApplicationController
   def new
     @listing = Listing.new
   end
+
   def create
     @listing = Listing.new(listing_params)
     @listing.user = current_user
     if @listing.save
-      redirect_to listing_path(@listing)
+      redirect_to listing_path(@listing), notice: "Listing created successfully"
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,6 +27,6 @@ class ListingsController < ApplicationController
 private
 
   def listing_params
-    params.require(:listing).permit(:title, :description, :fee, :location)
+    params.require(:listing).permit(:title, :description, :fee, :location, photos: [])
   end
 end

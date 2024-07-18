@@ -11,11 +11,13 @@
 # Seeding listings for use in the index
 
 20.times do
-  Listing.create(
-    user_id: 1,
+  listing = Listing.create(
+    user_id: rand(1...(User.all.size)),
     title: Faker::Book.title,
     description: Faker::Lorem.paragraph_by_chars(number: 50, supplemental: false),
     fee: Faker::Number.decimal(l_digits: 2),
-    location: Faker::Address.full_address
+    location: Faker::Address.full_address,
   )
+  file = URI.open(Faker::LoremFlickr.image(size: "300x300"))
+  listing.photos.attach(io: file, filename: 'listing.jpg', content_type: 'image/jpg')
 end

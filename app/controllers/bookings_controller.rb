@@ -4,6 +4,10 @@ class BookingsController < ApplicationController
     @bookings = Booking.all
   end
 
+  def show
+    @booking = Booking.find(params[:id])
+  end
+
   def new
     @booking = Booking.new
     @booking.user = current_user
@@ -15,7 +19,7 @@ class BookingsController < ApplicationController
     @booking.listing_id = params[:listing_id]
     @booking.user = current_user
     if @booking.save
-      redirect_to listing_path(params[:listing_id])
+      redirect_to booking_path(params[:booking_id]) ##is this the correct path for a booking?
           else
       render :new, status: :unprocessable_entity
     end

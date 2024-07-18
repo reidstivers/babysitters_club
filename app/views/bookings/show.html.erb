@@ -1,4 +1,8 @@
 <h1>Your Booking is Confirmed!</h1>
+<% @booking.listing.photos.each do |photo| %>
+  <%= image_tag(photo) %>
+<% end %>
+
 <div class="card-container">
   <div class="card-trip">
     <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />

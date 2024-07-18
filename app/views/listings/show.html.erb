@@ -1,23 +1,25 @@
 <%= link_to "Back to Listings", root_path %>
-<h1><%= @listing.title%></h1>
-<div class="d-flex">
-  <div>
-    <%= @listing.description%>
-    <%= @listing.fee%>
+<div class="flex-container">
+  <div id="booking-details">
+    <% @listing.photos.each do |photo| %>
+      <%= image_tag photo %>
+    <% end %>
+    <h1><%= @listing.title%></h1>
+    <h5> <%= @listing.description%> </h5>
+    <p> <%= @listing.fee %> ¥ per hour </p>
   </div>
-  <div class="card"><% @listing.photos.each do |photo| %>
-        <%= image_tag photo %></div>
-  <% end %>
+
+  <div id="booking-form">
+    <%= simple_form_for [@listing, @booking] do |f| %>
+      <%= f.input :start_at, as: :datetime_local %>
+      <%= f.input :end_at, as: :datetime_local %>
+      <%= f.input :notes %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+  <div>
+    <% @bookings.each do |booking|%>
+    <%= booking.id %>
+    <% end %>
+  </div>
 </div>
-
-
-<%= simple_form_for [@listing, @booking] do |f| %>
-  <%= f.input :start_at %>
-  <%= f.input :end_at %>
-  <%= f.input :notes %>
-  <%= f.submit %>
-<% end %>
-
-<% @bookings.each do |booking|%>
-<%= booking.id %>
-<% end %>

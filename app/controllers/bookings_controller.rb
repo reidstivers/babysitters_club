@@ -19,7 +19,7 @@ class BookingsController < ApplicationController
     @booking.listing_id = params[:listing_id]
     @booking.user = current_user
     if @booking.save
-      redirect_to booking_path(params[:booking_id]) ##is this the correct path for a booking?
+      redirect_to booking_path(params[:booking_id]), notice: "Booking created successfully"
           else
       render :new, status: :unprocessable_entity
     end
@@ -28,6 +28,6 @@ class BookingsController < ApplicationController
 private
 
   def booking_params
-    params.require(:booking).permit(:start_at, :end_at)
+    params.require(:booking).permit(:start_at, :end_at, :notes)
   end
 end

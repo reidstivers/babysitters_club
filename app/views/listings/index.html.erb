@@ -11,6 +11,9 @@
       <p> <%= listing.fee %> </p>
       <p> <%= User.find_by_id(listing.user_id).first_name %> <%= User.find_by_id(listing.user_id).last_name %> </p>
       <p> <%= link_to "Check the details", listing_path(listing) %> </p>
+      <% listing.photos.each do |photo| %>
+        <%= image_tag photo %>
+      <% end %>
     </li>
   <% end %>
 </ul>

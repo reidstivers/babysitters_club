@@ -1,9 +1,10 @@
 <h1>This is a New Listing</h1>
 
-<%= simple_form_for [@listing] do |f| %>
+<%= simple_form_for @listing, html: { multipart: true } do |f| %>
   <%= f.input :title %>
   <%= f.input :description %>
   <%= f.input :location %>
   <%= f.input :fee %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.submit %>
 <% end %>

@@ -20,8 +20,8 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     if @booking.save
       redirect_to booking_path(params[:booking_id]), notice: "Booking created successfully"
-          else
-      render :new, status: :unprocessable_entity
+    else
+      redirect_to listing_path(params[:listing_id]), status: :unprocessable_entity
     end
   end
 

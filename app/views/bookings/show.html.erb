@@ -1,12 +1,13 @@
 <h1>Your Booking is Confirmed!</h1>
 <div class="card-container">
   <div class="card-trip">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+      <%= image_tag(@booking.listing.photos.first) %>
     <div class="card-trip-infos">
       <div>
         <h2><%= @booking.listing.title %></h2>
         <p><%= @booking.listing.description %></p>
         <p><%= @booking.start_at %> to <%= @booking.end_at %></p>
+        <p><%= @booking.notes %></p>
       </div>
       <h2 class="card-trip-pricing"><%= "$#{@booking.listing.fee}" %></h2>
       <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />

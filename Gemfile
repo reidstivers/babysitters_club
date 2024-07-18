@@ -78,3 +78,4 @@ end
 # Manually Added Gems
 gem "devise"
 gem "faker"
+gem "cloudinary"

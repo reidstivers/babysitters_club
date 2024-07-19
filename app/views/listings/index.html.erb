@@ -3,34 +3,23 @@
 
 <%# <%= link_to "Log Out", destroy_user_session_path, data: { turbo_method: :delete } %>
 <%# <%= link_to "Sign_up", new_user_registration_path %>
-<div class="listings">
+<div class="container">
   <% @listings.each do |listing| %>
-    <div class="listing">
-        <div class="listing-header">
-          <% listing.photos.each do |photo| %>
-            <%= image_tag photo %>
-          <% end %>
-          <div class="listing-left">
-              <h2 class="listing-title"><%= listing.title %></h2>
-              <p class="listing-description"><%= listing.description %></p>
-              <div class="listing-detail">
-                <%= link_to ">> Check the details", listing_path(listing) %>
-              </div>
-          </div>
-          <div class="listing-right">
-              <div class="listing-price">
-                $ <%= listing.fee %>
-              </div>
-              <div class="listing-person">Provided by<br />
-                <% if (User.find_by_id(listing.user_id).photo.attached?) %>
-                  <%= User.find_by_id(listing.user_id).photo.attached %><br />
-                <% else %>
-                  <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-large" %><br />
-                <% end %>
-                <%= User.find_by_id(listing.user_id).first_name %> <%= User.find_by_id(listing.user_id).last_name %>
-              </div>
-          </div>
+    <div class="card-listings">
+      <% listing.photos.each do |photo| %>
+        <%= image_tag photo %>
+      <% end %>
+      <div class="card-listings-info">
+        <h2><%= listing.title %></h2>
+        <p><%= listing.description %></p>
+        <p>Provided by: <%= User.find_by_id(listing.user_id).first_name %> <%= User.find_by_id(listing.user_id).last_name %></p>
+        <div class="card-listings-detail">
+          <%= link_to ">> Check the details", listing_path(listing) %>
         </div>
+      </div>
+      <div class="card-listings-price">
+        $ <%= listing.fee %>
+      </div>
     </div>
   <% end %>
 </div>

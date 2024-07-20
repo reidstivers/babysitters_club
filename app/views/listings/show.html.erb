@@ -1,27 +1,43 @@
-<%= link_to "Back to Listings", root_path %>
-<div class="flex-container">
-  <div id="booking-details">
-    <% @listing.photos.each do |photo| %>
-      <%= image_tag photo %>
-    <% end %>
-    <h1><%= @listing.title%></h1>
-    <h5> <%= @listing.description%> </h5>
-    <p> <%= @listing.fee %> ¥ per hour </p>
+<%= link_to "Back to Listings", root_path, class: 'btn btn-primary mb-3' %>
+
+<div class="container">
+  <div class="card-container">
+        <div class="booking-card" id="booking-details">
+          <% @listing.photos.each do |photo| %>
+            <%= image_tag photo %>
+          <% end %>
+          <div class="text-center m-3">
+            <h1><%= @listing.title %></h1>
+            <h5> <%= @listing.description %></h5>
+            <p> <%= @listing.fee %> USD per hour </p>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container bordered-container">
+      <div id="booking-form mt-2">
+        <%= simple_form_for [@listing, @booking] do |f| %>
+          <%= f.input :start_at, html5: true %>
+          <%= f.input :end_at, html5: true %>
+          <%= f.input :notes %>
+          <div class="text-center">
+            <%= f.submit class: "btn btn-primary mb-3" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 
-  <div id="booking-form">
-    <%= simple_form_for [@listing, @booking] do |f| %>
-      <%= f.input :start_at, html5: true %>
-      <%= f.input :end_at, html5: true %>
-      <%= f.input :notes %>
-      <%= f.submit %>
-    <% end %>
-  </div>
-  <div>
-    <% @listing.bookings.each do |booking|%>
-    <%= booking.id %>
-    <% end %>
-  </div>
+
+<%# <div> %>
+    <%# @listing.bookings.each do |booking|%>
+    <%#= booking.id %>
+    <%# end %>
+<%# </div> %>
 </div>
 
 <% if false %>

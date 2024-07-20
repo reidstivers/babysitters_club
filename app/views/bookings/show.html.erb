@@ -1,26 +1,35 @@
-<h1>Your Booking is Confirmed!</h1>
-<div class="card-container">
-  <div class="card-trip">
-    <% if @booking.listing.photos.attached? %>
-      <%= image_tag(@booking.listing.photos.first) %>
-      <% else %>
-      <%= image_tag "https://res.cloudinary.com/dpz6vgbvz/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1721316236/xinxrzko9jfiawmqwyki.jpg" %>
-    <% end %>
-    <div class="card-trip-infos">
-      <div>
-        <h2><%= @booking.listing.title %></h2>
-        <p><%= @booking.listing.description %></p>
-        <p><%= @booking.start_at %> to <%= @booking.end_at %></p>
-        <p><%= @booking.notes %></p>
-      </div>
-      <h2 class="card-trip-pricing"><%= "$#{@booking.listing.fee}" %></h2>
-      <% if current_user.photo.attached? %>
-        <%= cl_image_tag current_user.photo.key, class: "card-trip-user avatar-bordered" %>
+<div class="container">
+
+  <h1>Your Booking Details</h1>
+  <div class="booking-details">
+    <div class="booking-container">
+      <h2><%= @booking.start_at %> to <%= @booking.end_at %></h2>
+      <div class="booking-notes"><p style="text-decoration: underline;">Notes</p><%= @booking.notes %></div>
+    </div>
+  <div class="card-container">
+    <div class="card-trip">
+      <% if @booking.listing.photos.attached? %>
+        <%= image_tag(@booking.listing.photos.first) %>
+        <% else %>
+        <%= image_tag "https://res.cloudinary.com/dpz6vgbvz/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1721316236/xinxrzko9jfiawmqwyki.jpg" %>
       <% end %>
+      <div class="card-trip-infos">
+        <div>
+          <h2><%= @booking.listing.title %></h2>
+          <p><%= @booking.listing.description %></p>
+        </div>
+        <h2 class="card-trip-pricing"><%= "$#{@booking.listing.fee}" %></h2>
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, class: "card-trip-user avatar-bordered" %>
+        <% end %>
+      </div>
     </div>
   </div>
   </div>
-<div class="d-flex justify-content-center align-items-center">
-  <%= link_to 'See all bookings', bookings_path, class: 'btn btn-primary' %>
-  <%= link_to 'Home', root_path, class: 'btn btn-primary ms-3' %>
+</div>
+
+  <div class="d-flex justify-content-center align-items-center">
+    <%= link_to 'See all bookings', bookings_path, class: 'btn btn-outline-secondary' %>
+    <%= link_to 'Home', root_path, class: 'btn btn-outline-secondary ms-3' %>
+  </div>
 </div>

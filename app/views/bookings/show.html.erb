@@ -2,9 +2,9 @@
 <div class="card-container">
   <div class="card-trip">
     <% if @booking.listing.photos.attached? %>
-      <%= image_tag(@booking.listing.photos.first) %>
+      <%= image_tag(@booking.listing.photos.first, class: "card-trip-img") %>
       <% else %>
-      <%= image_tag "https://res.cloudinary.com/dpz6vgbvz/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1721316236/xinxrzko9jfiawmqwyki.jpg" %>
+      <%= image_tag("https://res.cloudinary.com/dpz6vgbvz/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1721316236/xinxrzko9jfiawmqwyki.jpg", class: "card-trip-img") %>
     <% end %>
     <div class="card-trip-infos">
       <div>

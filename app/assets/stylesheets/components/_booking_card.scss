@@ -17,6 +17,7 @@
   height: auto;
   width: 100%;
   object-fit: cover;
+  max-height: 400px;
 }
 
 .card-trip h2 {
@@ -45,4 +46,10 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.test {
+  border: 5px red;
+  max-width: 20px;
+  max-height: 20px;
 }

@@ -1,24 +1,29 @@
+
 .card-container {
-  width: 500px;
+  display: flex;
+  width: 800px;
   height: 500px;
   margin: auto;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  margin-bottom: 40px;
+  gap: 40px 5%;
 }
 
 .bordered-container {
   border: 1px solid #000; /* Adjust color and border size as needed */
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .booking-card {
-  overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .booking-card > img {
   height: auto;
-  width: 100%;
+  width: 300px;
   object-fit: cover;
 }

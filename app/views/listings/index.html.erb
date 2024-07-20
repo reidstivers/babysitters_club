@@ -23,7 +23,7 @@
               </div>
               <div class="listing-person">Provided by<br />
                 <% if listing.user.photo.attached? %>
-                  <%= image_tag listing.user.photo %><br />
+                  <%= image_tag listing.user.photo, class: "avatar-large" %><br />
                 <% else %>
                   <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-large" %><br />
                 <% end %>

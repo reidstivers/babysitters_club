@@ -5,6 +5,8 @@ class Listing < ApplicationRecord
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
 
-  validates :title, :description, :fee, :location, presence: true
+  # Removed :listing from required fields to allow us to work for the demo
+  # Need to add the listing back in later
+  validates :title, :description, :fee, presence: true
   validates :description, length: { minimum: 10 }
 end

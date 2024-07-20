@@ -1,9 +1,10 @@
 <div class="container">
 
-  <h1>Your Booking Details</h1>
+  <h1><i class="fa-solid fa-book-open" style="color: #c84209;"></i></h1>
   <div class="booking-details">
     <div class="booking-container">
-      <h2><%= @booking.start_at %> to <%= @booking.end_at %></h2>
+      <h2> From <%= @booking.start_at.strftime("%B %d, %I:%M %p") %></h2>
+      <h2> to <%= @booking.end_at.strftime("%B %d, %I:%M %p") %> </h2>
       <div class="booking-notes"><p style="text-decoration: underline;">Notes</p><%= @booking.notes %></div>
     </div>
   <div class="card-container">

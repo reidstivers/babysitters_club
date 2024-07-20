@@ -9,7 +9,7 @@
           <div class="text-center m-3">
             <h1><%= @listing.title %></h1>
             <h5> <%= @listing.description %></h5>
-            <p> <%= @listing.fee %> USD per hour </p>
+            <h2 class="card-trip-pricing"><%= "$#{@listing.fee} per hour" %></h2>
           </div>
           </div>
         </div>

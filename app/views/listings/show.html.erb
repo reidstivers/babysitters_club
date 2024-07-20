@@ -1,6 +1,6 @@
 <%= link_to "Back to Listings", root_path, class: 'btn btn-primary mb-3' %>
 
-<div class="container">
+<%# <div class="container-cards"> %>
   <div class="card-container">
         <div class="booking-card" id="booking-details">
           <% @listing.photos.each do |photo| %>
@@ -12,11 +12,7 @@
             <h2 class="card-trip-pricing"><%= "$#{@listing.fee} per hour" %></h2>
           </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+        <%# </div> %>
 
     <div class="container bordered-container">
       <div id="booking-form mt-2">

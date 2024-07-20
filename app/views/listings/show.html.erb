@@ -4,7 +4,7 @@
   <div class="card-container">
         <div class="booking-card" id="booking-details">
           <% @listing.photos.each do |photo| %>
-            <%= image_tag photo, class: "d-flex justify-content-center" %>
+            <%= image_tag photo %>
           <% end %>
           <div class="text-center m-3">
             <h1><%= @listing.title %></h1>

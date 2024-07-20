@@ -20,10 +20,15 @@
 .booking-card {
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
 }
 
 .booking-card > img {
   height: auto;
-  width: 300px;
-  object-fit: cover;
+  width: auto;
+  object-fit: contain;
+  max-height: 300px;
 }

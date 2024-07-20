@@ -15,7 +15,7 @@
       </div>
       <h2 class="card-trip-pricing"><%= "$#{@booking.listing.fee}" %></h2>
       <% if current_user.photo.attached? %>
-        <%= image_tag current_user.photo.key, class: "card-trip-user avatar-bordered" %>
+        <%= cl_image_tag current_user.photo.key, class: "card-trip-user avatar-bordered" %>
       <% end %>
     </div>
   </div>

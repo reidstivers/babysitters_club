@@ -8,6 +8,15 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     @booking = Booking.new
     @bookings = @listing.bookings
+    if @listing.geocoded?
+      @markers = [{
+        lat: @listing.latitude,
+        lng: @listing.longitude,
+        marker_html: render_to_string(partial: "listings/marker")
+      }]
+    else
+      @markers = []
+    end
   end
 
   def new

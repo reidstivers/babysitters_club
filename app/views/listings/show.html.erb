@@ -11,8 +11,8 @@
 
   <div id="booking-form">
     <%= simple_form_for [@listing, @booking] do |f| %>
-      <%= f.input :start_at %>
-      <%= f.input :end_at %>
+      <%= f.input :start_at, html5: true %>
+      <%= f.input :end_at, html5: true %>
       <%= f.input :notes %>
       <%= f.submit %>
     <% end %>
@@ -23,3 +23,7 @@
     <% end %>
   </div>
 </div>
+
+<% if false %>
+  <%= render "map" %>
+<% end %>

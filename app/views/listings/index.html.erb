@@ -8,7 +8,7 @@
     <div class="listing">
         <div class="listing-header">
           <% listing.photos.each do |photo| %>
-            <%= image_tag photo %>
+            <%= image_tag photo, class: "listing-image" %>
           <% end %>
           <div class="listing-left">
               <h2 class="listing-title"><%= listing.title %></h2>

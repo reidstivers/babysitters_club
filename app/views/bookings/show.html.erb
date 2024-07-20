@@ -1,7 +1,11 @@
 <h1>Your Booking is Confirmed!</h1>
 <div class="card-container">
   <div class="card-trip">
+    <% if @booking.listing.photos.attached? %>
       <%= image_tag(@booking.listing.photos.first) %>
+      <% else %>
+      <%= image_tag "https://res.cloudinary.com/dpz6vgbvz/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1721316236/xinxrzko9jfiawmqwyki.jpg" %>
+    <% end %>
     <div class="card-trip-infos">
       <div>
         <h2><%= @booking.listing.title %></h2>
@@ -10,7 +14,7 @@
         <p><%= @booking.notes %></p>
       </div>
       <h2 class="card-trip-pricing"><%= "$#{@booking.listing.fee}" %></h2>
-      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+      <%= image_tag rails_blob_path(current_user.photo, only_path: true), class: "card-trip-user avatar-bordered" %>
     </div>
   </div>
   </div>

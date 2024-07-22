@@ -7,6 +7,23 @@
           <h4> <%= Listing.find_by_id(booking.listing_id).title %> </h4>
           <p> Starts on: <%= booking.start_at %> </p>
           <p> Ends on: <%= booking.end_at %> </p>
+          <%= render partial: "status", locals: {booking: booking} %>
+        </li>
+      <% end %>
+    <% end %>
+  <% end %>
+</ul>
+<%# A list to display booking made on current user's listings %>
+<h1> Bookings with you </h1>
+<ul>
+  <% @bookings.each do | booking | %>
+    <% if booking.listing.user_id == current_user.id %>
+      <%= link_to booking_path(booking) do  %>
+        <li class="card">
+          <h4> <%= Listing.find_by_id(booking.listing_id).title %> </h4>
+          <p> Starts on: <%= booking.start_at %> </p>
+          <p> Ends on: <%= booking.end_at %> </p>
+          <%= render partial: "status", locals: {booking: booking} %>
         </li>
       <% end %>
     <% end %>

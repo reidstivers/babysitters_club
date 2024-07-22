@@ -6,7 +6,13 @@
       <h2> From <%= @booking.start_at.strftime("%B %d, %I:%M %p") %></h2>
       <h2> to <%= @booking.end_at.strftime("%B %d, %I:%M %p") %> </h2>
       <div class="booking-notes"><p style="text-decoration: underline;">Notes</p><%= @booking.notes %></div>
-      <%= render "status" %>
+      <%= render partial: "status", locals: {booking: @booking} %>
+      <% if @booking.listing.user_id == current_user.id && @booking.status == 1 %>
+        <div class="status-button-container">
+          <%= button_to "Confirm", @booking, method: :patch, params: { booking: { status: 2 } }, class: "btn btn-success status-btn" %>
+          <%= button_to "Decline", @booking, method: :patch, params: { booking: { status: 3 } }, class: "btn btn-danger status-btn" %>
+        </div>
+      <% end %>
     </div>
   <div class="card-container">
     <div class="card-trip">

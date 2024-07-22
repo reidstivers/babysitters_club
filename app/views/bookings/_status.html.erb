@@ -1,0 +1,9 @@
+<div>
+  <% if booking.status == 1 %>
+    <div class="status-container pending"> Pending </div>
+  <% elsif booking.status == 2 %>
+    <div class="status-container confirmed"> Confirmed </div>
+  <% elsif booking.status == 3 %>
+    <div class="status-container declined"> Declined </div>
+  <% end %>
+</div>

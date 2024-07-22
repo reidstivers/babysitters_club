@@ -6,6 +6,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 10px;
   margin-bottom: 20px;
+  position: relative;
 }
 .booking-container {
   padding: 20px;
@@ -63,4 +64,51 @@
   border: 2px red;
   // max-width: 20px;
   // max-height: 20px;
+}
+
+
+.status-container {
+  position: absolute;
+  margin: 8px;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+}
+
+.pending {
+  background-color: yellow;
+}
+
+.confirmed {
+  background-color: green;
+}
+
+.declined {
+  background-color: red;
+}
+
+.status-button-container {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  margin: 8px;
+
+}
+
+.status-btn {
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 8px;
 }

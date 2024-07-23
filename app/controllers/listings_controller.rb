@@ -4,6 +4,10 @@ class ListingsController < ApplicationController
     @listings = Listing.all
   end
 
+  def sitter_listings
+    @listings = current_user.listings
+  end
+
   def show
     @listing = Listing.find(params[:id])
     @booking = Booking.new

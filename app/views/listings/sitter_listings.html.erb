@@ -1,0 +1,31 @@
+<h1> My Listings </h1>
+<%= link_to "Create a  New Listing", new_listing_path %>
+<% if @listings.empty? %>
+  <p>You have no listings :(</p>
+  <p>Are you good with kids? Got some spare time? Create a listing now to get started!</p>
+<% else %>
+  <!-- Display the listings here -->
+  <% @listings.each do |listing| %>
+    <div class="listing">
+        <div class="listing-header">
+          <% listing.photos.each do |photo| %>
+            <%= image_tag photo, class: "listing-image" %>
+          <% end %>
+          <div class="listing-left">
+              <h2 class="listing-title"><%= listing.title %></h2>
+              <p class="listing-description"><%= listing.description %></p>
+              <div class="listing-detail">
+                <%= link_to listing_path(listing) do %>
+                <i class="fa-solid fa-book-open fa-2x"></i>
+                <% end %>
+              </div>
+          </div>
+          <div class="listing-right">
+              <div class="listing-price">
+                $ <%= listing.fee %>
+              </div>
+          </div>
+        </div>
+    </div>
+  <% end %>
+<% end %>

@@ -1,5 +1,6 @@
+<div class="container">
 <h1> My Listings </h1>
-<%= link_to "Create a  New Listing", new_listing_path %>
+<%= link_to "Create a  New Listing", new_listing_path, class: "btn btn-primary" %>
 <% if @listings.empty? %>
   <p>You have no listings :(</p>
   <p>Are you good with kids? Got some spare time? Create a listing now to get started!</p>
@@ -29,3 +30,4 @@
     </div>
   <% end %>
 <% end %>
+</div>

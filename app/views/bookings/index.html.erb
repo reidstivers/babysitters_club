@@ -1,35 +1,49 @@
-<h1>Your Bookings</h1>
-<ul>
-  <% if @bookings.empty? %>
-    <p>You've made no bookings :(</p>
-  <% else %>
-    <% @bookings.each do |booking| %>
-      <% if booking.user_id == current_user.id %>
-        <%= link_to booking_path(booking) do %>
-          <li class="card">
-            <h4><%= Listing.find_by_id(booking.listing_id).title %></h4>
-            <p>Starts on: <%= booking.start_at %></p>
-            <p>Ends on: <%= booking.end_at %></p>
-            <%= render partial: "status", locals: {booking: booking} %>
-          </li>
+<div class="container">
+  <h1>Your Bookings</h1>
+    <% if @bookings.empty? %>
+      <p>You've made no bookings :(</p>
+    <% else %>
+      <% @bookings.each do |booking| %>
+        <% if booking.user_id == current_user.id %>
+          <div class="bookings">
+            <%= render partial: "status", locals: {booking: booking}, class: "booking-status" %>
+            <div class="booking-header">
+                  <p>Starts on: <%= booking.start_at.strftime('%Y/%m/%d %H:%M') %> -> Ends on: <%= booking.end_at.strftime('%Y/%m/%d %H:%M') %></p>
+            </div>
+            <div class="booking-detail">
+              <% Listing.find_by_id(booking.listing_id).photos.each do |photo| %>
+                <%= image_tag photo, class: "booking-image" %>
+              <% end %>
+              <%= link_to booking_path(booking) do %>
+                <h4><span class="link-secondary"><%= Listing.find_by_id(booking.listing_id).title %></span> <i class="fa-solid fa-book-open" style="color: #c84209;"></i></h4>
+              <% end %>
+            </div>
         <% end %>
+          </div>
       <% end %>
     <% end %>
-  <% end %>
-</ul>
-<%# A list to display booking made on current user's listings %>
-<h1> Bookings with you </h1>
-<ul>
-  <% @bookings.each do | booking | %>
-    <% if booking.listing.user_id == current_user.id %>
-      <%= link_to booking_path(booking) do  %>
-        <li class="card">
-          <h4> <%= Listing.find_by_id(booking.listing_id).title %> </h4>
-          <p> Starts on: <%= booking.start_at %> </p>
-          <p> Ends on: <%= booking.end_at %> </p>
-          <%= render partial: "status", locals: {booking: booking} %>
-        </li>
+
+  <h1> Bookings with you </h1>
+    <% if @bookings.empty? %>
+      <p>You've made no bookings :(</p>
+    <% else %>
+      <% @bookings.each do |booking| %>
+        <% if booking.listing.user_id == current_user.id %>
+          <div class="bookings">
+            <%= render partial: "status", locals: {booking: booking}, class: "booking-status" %>
+            <div class="booking-header">
+                  <p>Starts on: <%= booking.start_at.strftime('%Y/%m/%d %H:%M') %> -> Ends on: <%= booking.end_at.strftime('%Y/%m/%d %H:%M') %></p>
+            </div>
+            <div class="booking-detail">
+              <% Listing.find_by_id(booking.listing_id).photos.each do |photo| %>
+                <%= image_tag photo, class: "booking-image" %>
+              <% end %>
+              <%= link_to booking_path(booking) do %>
+                <h4><span class="link-secondary"><%= Listing.find_by_id(booking.listing_id).title %></span></h4>
+              <% end %>
+            </div>
+        <% end %>
+          </div>
       <% end %>
     <% end %>
-  <% end %>
-</ul>
+</div>

@@ -1,4 +1,6 @@
 class ListingsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     # Conditional statement to permit search bar usage on the index, using the pg_search gem
     # Searches listing.title, listing.description, user.first_name, user.last_name

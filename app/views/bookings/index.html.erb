@@ -1,14 +1,18 @@
 <h1>Your Bookings</h1>
 <ul>
-  <% @bookings.each do | booking | %>
-    <% if booking.user_id == current_user.id %>
-      <%= link_to booking_path(booking) do  %>
-        <li class="card">
-          <h4> <%= Listing.find_by_id(booking.listing_id).title %> </h4>
-          <p> Starts on: <%= booking.start_at %> </p>
-          <p> Ends on: <%= booking.end_at %> </p>
-          <%= render partial: "status", locals: {booking: booking} %>
-        </li>
+  <% if @bookings.empty? %>
+    <p>You've made no bookings :(</p>
+  <% else %>
+    <% @bookings.each do |booking| %>
+      <% if booking.user_id == current_user.id %>
+        <%= link_to booking_path(booking) do %>
+          <li class="card">
+            <h4><%= Listing.find_by_id(booking.listing_id).title %></h4>
+            <p>Starts on: <%= booking.start_at %></p>
+            <p>Ends on: <%= booking.end_at %></p>
+            <%= render partial: "status", locals: {booking: booking} %>
+          </li>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "listings#index"
+  get 'my-listings', to: 'listings#sitter_listings'
   resources :listings do
     resources :bookings
   end

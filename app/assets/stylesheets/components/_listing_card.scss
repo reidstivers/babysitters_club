@@ -1,34 +1,34 @@
-
-.card-container {
+.listing-card-container {
   display: flex;
   width: 800px;
-  height: 500px;
   margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 40px;
   margin-bottom: 40px;
   gap: 40px 5%;
 }
 
-.bordered-container {
+.listing-bordered-container {
+  width:50%;
   border: 1px solid #000; /* Adjust color and border size as needed */
   background-color: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-.booking-card {
+.listing-card {
+  width:50%;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   justify-content: center;
   display: flex;
   flex-direction: column;
-  padding: 5px;
+  padding: 20px;
 }
 
-.booking-card > img {
-  height: auto;
-  width: auto;
+.listing-card > img {
+  width: 100%;
   object-fit: contain;
   max-height: 300px;
 }

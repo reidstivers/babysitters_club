@@ -5,6 +5,18 @@ class Listing < ApplicationRecord
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
 
+  include PgSearch::Model
+  # Implements pg_search gem to allow for search bar functionality
+  # Associated to user to allow for searching for listing by sitter name
+  pg_search_scope :search_by_title_and_description,
+    against: [:title, :description],
+    associated_against: {
+    user: [:first_name, :last_name]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
+
   # Removed :listing from required fields to allow us to work for the demo
   # Need to add the listing back in later
   validates :title, :description, :fee, presence: true

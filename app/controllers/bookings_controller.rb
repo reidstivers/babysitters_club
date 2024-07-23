@@ -1,5 +1,4 @@
 class BookingsController < ApplicationController
-
   def index
     @bookings = current_user.bookings
   end
@@ -35,7 +34,7 @@ class BookingsController < ApplicationController
     end
   end
 
-private
+  private
 
   def booking_params
     params.require(:booking).permit(:start_at, :end_at, :notes, :status)

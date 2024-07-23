@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   def index
     @bookings = current_user.bookings
+    @bookings = @bookings.order(:start_at)
   end
 
   def show

@@ -1,6 +1,8 @@
 class BookingsController < ApplicationController
   def index
     @bookings = current_user.bookings
+    # Reorders bookings by their start_at date
+    @bookings = @bookings.order(:start_at)
   end
 
   def show

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  root "listings#index"
+  root "pages#home"
   get 'my-listings', to: 'listings#sitter_listings'
   resources :listings do
     resources :bookings

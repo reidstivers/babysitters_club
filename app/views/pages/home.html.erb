@@ -1,2 +1,28 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="d-flex justify-content-center">
+
+  <div class="background">
+
+    <div class="home">
+
+      <h1> Welcome to the BabySitter's Club </h1>
+      <h4> The few, the proud, the babysitters </h4>
+
+      <div class="splash">
+        <h2>What are we looking for today?</h2>
+        <div class="d-flex justify-content-between">
+          <%= link_to listings_path do %>
+            <div class="parent btn">
+              <h4>I'm a parent</h4>
+            </div>
+          <% end %>
+          <%= link_to bookings_path do %>
+            <div class="sitter btn">
+              <h4>I am a sitter</h4>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

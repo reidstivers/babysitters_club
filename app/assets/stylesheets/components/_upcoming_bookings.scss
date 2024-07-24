@@ -1,0 +1,58 @@
+/* Container for the upcoming bookings */
+.upcoming-bookings-container {
+  max-width: 45%;
+  margin: 20px 0;
+}
+
+/* Styling for the heading */
+.upcoming-bookings-container h2 {
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+}
+
+/* Styling for the list of bookings */
+.upcoming-bookings-container ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+  list-style: none;
+}
+
+/* Styling for each booking card */
+.upcoming-bookings-container li.card {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  padding: 15px;
+  width: 250px;
+  transition: transform 0.2s;
+}
+
+.upcoming-bookings-container li.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Styling for the text inside each card */
+.upcoming-bookings-container li.card p {
+  margin: 10px 0;
+  color: #555;
+}
+
+/* Container for the listing card */
+.listing-card-container {
+  max-width: 45%;
+  margin: 20px 0;
+}
+
+/* Parent container styling */
+.container {
+  max-width: 90%;
+  margin: 0 auto;
+}

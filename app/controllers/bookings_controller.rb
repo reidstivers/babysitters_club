@@ -1,7 +1,8 @@
 class BookingsController < ApplicationController
   def index
     @bookings = current_user.bookings
-    @bookings = @bookings.where("end_at > ?", Time.now).order(:start_at)
+    # Reorders bookings by their start_at date
+    @bookings = @bookings.order(:start_at)
   end
 
   def show

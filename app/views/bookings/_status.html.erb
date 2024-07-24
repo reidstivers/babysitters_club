@@ -5,5 +5,7 @@
     <div class="status-container confirmed"> Confirmed </div>
   <% elsif booking.status == 3 %>
     <div class="status-container declined"> Declined </div>
+  <% elsif booking.status == 4 %>
+    <div class="status-container completed" > Completed </div>
   <% end %>
 </div>

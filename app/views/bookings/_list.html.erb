@@ -1,12 +1,22 @@
-<% if bookings.any? %>
+<% if bookings.any?%>
   <% bookings.each do |booking| %>
-    <%= link_to booking_path(booking) do %>
-      <li class="card">
-        <h4><%= Listing.find_by_id(booking.listing_id).title %></h4>
-        <p>Starts on: <%= booking.start_at %></p>
-        <p>Ends on: <%= booking.end_at %></p>
-        <%= render partial: "status", locals: {booking: booking} %>
-      </li>
+    <% if booking.user_id == current_user.id %>
+      <%= link_to booking_path(booking) do %>
+        <div class="bookings">
+          <%= render partial: "status", locals: {booking: booking}, class: "booking-status" %>
+          <div class="booking-header">
+            <p>Starts on: <%= booking.start_at.strftime('%Y/%m/%d %H:%M') %> -> Ends on: <%= booking.end_at.strftime('%Y/%m/%d %H:%M') %> </p>
+          </div>
+          <div class="booking-detail">
+            <%= Listing.find_by_id(booking.listing_id).title %>
+              <%= image_tag photo, class: "booking-image" %>
+            <% end %>
+            <% link_to booking_path(booking) do %>
+              <h4><span class="link-secondary"><%= Listing.find_by_id(booking.listing_id).title %> </span><i class="fa-solid fa-book-open" style="color: #c84209;"></i></h4>
+            <% end %>
+          </div>
+      <% end %>
+        </div>
     <% end %>
   <% end %>
 <% end %>

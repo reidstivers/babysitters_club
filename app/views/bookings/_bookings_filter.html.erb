@@ -1,0 +1,31 @@
+<h1>Your Bookings</h1>
+<% if bookings.empty? %>
+    <p>You've made no bookings :(</p>
+<% else %>
+  <ul>
+    <div data-controller="bookings">
+      <div class="bookings-filters">
+        <%= link_to "All Bookings", bookings_path, class: "btn btn-primary status-btn", data: { action: "click->bookings#toggle", status: "all" } %>
+        <%= link_to "Requested Bookings", bookings_path(status: 1), class: "btn pending status-btn", data: { action: "click->bookings#toggle", status: "pending"} %>
+        <%= link_to "Confirmed Bookings", bookings_path(status: 2), class: "btn confirmed status-btn", data: { action: "click->bookings#toggle", status: "confirmed"} %>
+        <%= link_to "Declined Bookings", bookings_path(status: 3), class: "btn declined status-btn", data: { action: "click->bookings#toggle", status: "declined"} %>
+        <%= link_to "Completed Bookings", bookings_path(status: 4), class: "btn completed status-btn", data: { action: "click->bookings#toggle", status: "completed"} %>
+      </div>
+      <div data-bookings-target="all" >
+        <%= render partial: "list", locals: {bookings: bookings} %>
+      </div>
+      <div data-bookings-target="pending" class="d-none">
+        <%= render partial: "list", locals: {bookings: bookings.select { |booking| booking.status == 1 }} %>
+      </div>
+      <div data-bookings-target="confirmed" class="d-none">
+        <%= render partial: "list", locals: {bookings: bookings.select { |booking| booking.status == 2 }} %>
+      </div>
+      <div data-bookings-target="declined" class="d-none">
+        <%= render partial: "list", locals: {bookings: bookings.select { |booking| booking.status == 3 }} %>
+      </div>
+      <div data-bookings-target="completed" class="d-none">
+        <%= render partial: "list", locals: {bookings: bookings.select { |booking| booking.status == 4 }} %>
+      </div>
+    </div>
+  </ul>
+<% end %>

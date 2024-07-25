@@ -1,7 +1,7 @@
 .booking-details {
   display: flex;
   flex-direction: row;
-  background-color: #fff;
+  background-color: $card-bg;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 10px;
@@ -16,7 +16,7 @@
 .booking-notes {
   width:100%;
   font-size: 20px;
-  background-color: lightyellow;
+  background-color: $banner-text-yellow;
   padding: 10px;
   margin-top: 20px;
 }

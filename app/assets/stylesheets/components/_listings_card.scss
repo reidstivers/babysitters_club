@@ -1,5 +1,5 @@
 .listings {
-  background-color: #f5f5f5;
+  background-color: $body-bg-green;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,7 +28,7 @@
   width: 200px;
   padding: 4px 24px;
   border-radius: 4px;
-  background: #5D8ADB;
+  background: $check-btn;
   margin-top: 20px;
 }
 
@@ -38,7 +38,7 @@
 }
 
 .listing {
-  background-color: #fff;
+  background-color: $card-bg;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 10px;
@@ -105,7 +105,7 @@
   padding: 4px 24px;
   text-align: center;
   border-radius: 4px;
-  background-color: #1de70b;
+  background-color: $price-bg;
 }
 
 .listing-person {

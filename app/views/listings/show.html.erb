@@ -30,6 +30,9 @@
             <p>Starts on: <%= booking.start_at %></p>
             <p>Ends on: <%= booking.end_at %></p>
             <%= render partial: "bookings/status", locals: {booking: booking} %>
+            <%= link_to booking_path(booking) do %>
+              <i class="fa-solid fa-calendar-check fa-2x"></i>
+            <% end %>
           </li>
         <% end %>
       </ul>

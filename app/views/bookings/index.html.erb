@@ -1,6 +1,8 @@
 <h1>Your Bookings</h1>
 <ul>
-  <% if @bookings.empty? %>
+  <%# Filtering for bookings associated with the current user %>
+  <% bookings = @bookings.select { |booking| booking.user_id == current_user.id } %>
+  <% if bookings.empty? %>
     <p>You've made no bookings :(</p>
   <% else %>
     <div data-controller="bookings">
@@ -12,36 +14,46 @@
         <%= link_to "Completed Bookings", bookings_path(status: 4), class: "btn completed status-btn", data: { action: "click->bookings#toggle", status: "completed"} %>
       </div>
       <div data-bookings-target="all" >
-        <%= render partial: "list", locals: {bookings: @bookings} %>
+        <%= render partial: "list", locals: {bookings: bookings} %>
       </div>
       <div data-bookings-target="pending" class="d-none">
-        <%= render partial: "list", locals: {bookings: @bookings.select { |booking| booking.status == 1 }} %>
+        <%= render partial: "list", locals: {bookings: bookings.select { |booking| booking.status == 1 }} %>
       </div>
       <div data-bookings-target="confirmed" class="d-none">
-        <%= render partial: "list", locals: {bookings: @bookings.select { |booking| booking.status == 2 }} %>
+        <%= render partial: "list", locals: {bookings: bookings.select { |booking| booking.status == 2 }} %>
       </div>
       <div data-bookings-target="declined" class="d-none">
-        <%= render partial: "list", locals: {bookings: @bookings.select { |booking| booking.status == 3 }} %>
+        <%= render partial: "list", locals: {bookings: bookings.select { |booking| booking.status == 3 }} %>
       </div>
       <div data-bookings-target="completed" class="d-none">
-        <%= render partial: "list", locals: {bookings: @bookings.select { |booking| booking.status == 4 }} %>
+        <%= render partial: "list", locals: {bookings: bookings.select { |booking| booking.status == 4 }} %>
       </div>
     </div>
   <% end %>
 </ul>
 <%# A list to display booking made on current user's listings %>
 <h1> Bookings with you </h1>
-<ul>
-  <% @bookings.each do | booking | %>
-    <% if booking.listing.user_id == current_user.id %>
-      <%= link_to booking_path(booking) do  %>
-        <li class="card">
-          <h4> <%= Listing.find_by_id(booking.listing_id).title %> </h4>
-          <p> Starts on: <%= booking.start_at %> </p>
-          <p> Ends on: <%= booking.end_at %> </p>
-          <%= render partial: "status", locals: {booking: booking} %>
-        </li>
-      <% end %>
-    <% end %>
-  <% end %>  
-</ul>
+<% my_bookings = @bookings.select { |booking| booking.listing.user_id == current_user.id } %>
+<% if my_bookings.empty? %>
+  <p> No appointments yet! </p>
+<% else %>
+  <% my_bookings.each do | booking | %>
+    <div class="bookings">
+      <%= render partial: "status", locals: {booking: booking}, class: "bookings-status" %>
+      <div class="booking-header">
+        <p>Starts on: <%= booking.start_at.strftime('%Y/%m/%d %H:%M') %> -> Ends on: <%= booking.end_at.strftime('%Y/%m/%d %H:%M') %> </p>
+      </div>
+      <div class="booking-detail">
+        <% booking.listing.photos.each do |photo| %>
+          <%= image_tag photo, class: "booking-image"%>
+        <% end %>
+        <%= link_to booking_path(booking) do %>
+          <h4>
+            <span class="link-secondary"><%= booking.listing.title %></span>
+            <i class="fa-solid fa-book-open" style="color:$c84209'"></i>
+          </h4>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

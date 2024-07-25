@@ -13,13 +13,13 @@
 .listing-bordered-container {
   width:50%;
   border: 1px solid #000; /* Adjust color and border size as needed */
-  background-color: white;
+  background-color: $card-bg;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .listing-card {
   width:50%;
-  background: white;
+  background: $card-bg;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   justify-content: center;
   display: flex;

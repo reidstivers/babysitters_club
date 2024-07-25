@@ -33,6 +33,7 @@ class ListingsController < ApplicationController
 
   def new
     @listing = Listing.new
+    @listing.availabilities.build
   end
 
   def create
@@ -48,6 +49,6 @@ class ListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit(:title, :description, :fee, :location, photos: [])
+    params.require(:listing).permit(:title, :description, :fee, :location, photos: [], availabilities_attributes: [:id, :start_time, :end_time, :_destroy])
   end
 end

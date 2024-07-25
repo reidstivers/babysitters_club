@@ -9,11 +9,19 @@
         <h1><%= @listing.title %></h1>
         <h5><%= @listing.description %></h5>
         <h2 class="card-trip-pricing"><%= "$#{@listing.fee} per hour" %></h2>
+        <% if @listing.availabilities.any? %>
+          <h3>--------------</h3>
+          <h3>Availability</h3>
+          <p>From: <%= @listing.availabilities.first.start_time.strftime("%B %d, %Y %H:%M") %></p>
+          <p>To: <%= @listing.availabilities.first.end_time.strftime("%B %d, %Y %H:%M") %></p>
+        <% else %>
+          <p>Not Currently Available</p>
+        <% end %>
       </div>
     </div>
   </div>
 
-  <% if @listing.user_id == current_user.id %>
+  <% if current_user && @listing.user_id == current_user.id %>
     <div class="upcoming-bookings-container flex-grow-1 ml-3">
       <h2>Upcoming Bookings</h2>
       <ul class="d-flex flex-wrap">
@@ -30,8 +38,18 @@
     <div class="container listing-bordered-container d-flex justify-content-center align-items-center flex-grow-1 ml-3">
       <div id="listing-form" class="mt-2">
         <%= simple_form_for [@listing, @booking] do |f| %>
-          <%= f.input :start_at, html5: true %>
-          <%= f.input :end_at, html5: true %>
+          <% if @booking.errors.any? %>
+            <div id="error_explanation">
+              <h2>Please Check the Following Error:</h2>
+              <ul>
+                <% @booking.errors.full_messages.each do |msg| %>
+                  <%= msg %>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <%= f.input :start_at, html5: true, minute_step: 15 %>
+          <%= f.input :end_at, html5: true, minute_step: 15 %>
           <%= f.input :notes %>
           <div class="text-center">
             <%= f.submit class: "btn btn-primary mb-3" %>
@@ -41,16 +59,15 @@
     </div>
   <% end %>
 
-</div>
-
   <div class="d-flex justify-content-center align-items-center">
     <%= link_to "Back to Listings", root_path, class: 'btn btn-outline-secondary mb-3' %>
   </div>
 </div>
+
 <%# <div> %>
-    <%# @listing.bookings.each do |booking|%>
-    <%#= booking.id %>
-    <%# end %>
+<%# @listing.bookings.each do |booking|%>
+<%#= booking.id %>
+<%# end %>
 <%# </div> %>
 
 <% if false %>

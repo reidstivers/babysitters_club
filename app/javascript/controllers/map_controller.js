@@ -10,32 +10,23 @@ export default class extends Controller {
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
-
-    const map = new mapboxgl.Map({
+    console.log("Map connected!")
+    this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10",
       zoom: 9
     });
     this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl }))
-    // this.#addMarkersToMap()
+    this.#addMarkersToMap()
     // this.#fitMapToMarkers()
   }
 
   #addMarkersToMap() {
+    console.log("Placing markers!", this.markersValue)
     this.markersValue.forEach((marker) => {
       new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat ])
-        .addTo(this.map)
-
-      // Create a HTML element for your custom marker
-      const customMarker = document.createElement("div")
-      customMarker.innerHTML = marker.marker_html
-
-      // Pass the element as an argument to the new marker
-      new mapboxgl.Marker(customMarker)
         .setLngLat([marker.lng, marker.lat])
-        .setPopup(popup)
         .addTo(this.map)
     })
   }

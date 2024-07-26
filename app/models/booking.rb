@@ -4,10 +4,10 @@ class Booking < ApplicationRecord
 
   validates :start_at, :end_at, presence: true
   validates_datetime :end_at, on_or_after: :start_at
-  validate :availability_check
+  # validate :availability_check
+  validates :status, inclusion: { in: [1, 2, 3, 4] }
 
   private
-
   def availability_check
     overlaps = listing.availabilities.overlapping(start_at, end_at)
     if overlaps.blank?

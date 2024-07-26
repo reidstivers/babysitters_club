@@ -29,6 +29,7 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
+    Rails.logger.info "Received booking params; #{params[:booking].inspect}"
     if @booking.update(booking_params)
       redirect_to booking_path(@booking), notice: "Booking updated successfully"
     else

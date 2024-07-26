@@ -12,6 +12,10 @@
           <%= button_to "Confirm", @booking, method: :patch, params: { booking: { status: 2 } }, class: "btn btn-success status-btn" %>
           <%= button_to "Decline", @booking, method: :patch, params: { booking: { status: 3 } }, class: "btn btn-danger status-btn", data: { turbo_confirm: "Are you sure?" } %>
         </div>
+      <% elsif @booking.listing.user_id == current_user.id && @booking.status == 2 %>
+        <div class="status-button-container">
+          <%= button_to "Cancel", @booking, method: :patch, params: { booking: {status: 3} }, class: "btn btn-danger status-btn", data: { turbo_confirm: "Are you sure?" } %>
+        </div>
       <% end %>
     </div>
   <div class="booking-card-container">

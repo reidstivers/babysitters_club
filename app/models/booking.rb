@@ -8,6 +8,7 @@ class Booking < ApplicationRecord
   validates :status, inclusion: { in: [1, 2, 3, 4] }
 
   private
+
   def availability_check
     overlaps = listing.availabilities.overlapping(start_at, end_at)
     if overlaps.blank?

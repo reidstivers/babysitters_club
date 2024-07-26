@@ -1,20 +1,22 @@
 <div class="container">
-
   <h1><i class="fa-solid fa-book-open" style="color: #c84209;"></i></h1>
+  <%= Time.zone.now %>
   <div class="booking-details">
     <div class="booking-container">
       <h2> From <%= @booking.start_at.strftime("%B %d, %I:%M %p") %></h2>
       <h2> to <%= @booking.end_at.strftime("%B %d, %I:%M %p") %> </h2>
       <div class="booking-notes"><p style="text-decoration: underline;">Notes</p><%= @booking.notes %></div>
       <%= render partial: "status", locals: {booking: @booking} %>
-      <% if @booking.listing.user_id == current_user.id && @booking.status == 1 %>
+      <% if @booking.listing.user_id == current_user.id %>
         <div class="status-button-container">
-          <%= button_to "Confirm", @booking, method: :patch, params: { booking: { status: 2 } }, class: "btn btn-success status-btn" %>
-          <%= button_to "Decline", @booking, method: :patch, params: { booking: { status: 3 } }, class: "btn btn-danger status-btn", data: { turbo_confirm: "Are you sure?" } %>
-        </div>
-      <% elsif @booking.listing.user_id == current_user.id && @booking.status == 2 %>
-        <div class="status-button-container">
-          <%= button_to "Cancel", @booking, method: :patch, params: { booking: {status: 3} }, class: "btn btn-danger status-btn", data: { turbo_confirm: "Are you sure?" } %>
+          <% if @booking.status == 1 %>
+            <%= button_to "Confirm", @booking, method: :patch, params: { booking: { status: 2 } }, class: "btn btn-success status-btn" %>
+            <%= button_to "Decline", @booking, method: :patch, params: { booking: { status: 3 } }, class: "btn btn-danger status-btn", data: { turbo_confirm: "Are you sure?" } %>
+          <% elsif @booking.status == 2 && @booking.end_at > Time.zone.now %>
+            <%= button_to "Cancel", @booking, method: :patch, params: { booking: {status: 3} }, class: "btn btn-danger status-btn", data: { turbo_confirm: "Are you sure?" } %>
+          <% elsif @booking.status == 2 && @booking.end_at < Time.zone.now %>
+            <%= button_to "Complete", @booking, method: :patch, params: { booking: {status: 4} }, class: "btn completed status-btn" %>
+          <% end %>
         </div>
       <% end %>
     </div>

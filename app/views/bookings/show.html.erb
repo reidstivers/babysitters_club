@@ -4,6 +4,7 @@
     <div class="booking-container">
       <h2> From <%= @booking.start_at.strftime("%B %d, %I:%M %p") %></h2>
       <h2> to <%= @booking.end_at.strftime("%B %d, %I:%M %p") %> </h2>
+      <h2> Total fee: $<%= @booking.fee %> </h2>
       <div class="booking-notes"><p style="text-decoration: underline;">Notes</p><%= @booking.notes %></div>
       <%= render partial: "status", locals: {booking: @booking} %>
       <% if @booking.listing.user_id == current_user.id %>

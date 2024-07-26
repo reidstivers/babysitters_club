@@ -10,6 +10,13 @@ class ListingsController < ApplicationController
     else
       @listings = Listing.all
     end
+    # create markers for use on the map
+    @markers = @listings.geocoded.map do |listing|
+      {
+        lat: listing.latitude,
+        lng: listing.longitude,
+      }
+    end
   end
 
   def sitter_listings

@@ -29,6 +29,7 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
+    Rails.logger.info "Received booking params; #{params[:booking].inspect}"
     if @booking.update(booking_params)
       redirect_to booking_path(@booking), notice: "Booking updated successfully"
     else
@@ -39,6 +40,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_at, :end_at, :notes, :status)
+    params.require(:booking).permit(:start_at, :end_at, :notes, :status, :comments, :fee)
   end
 end

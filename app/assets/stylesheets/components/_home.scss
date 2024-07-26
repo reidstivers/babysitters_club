@@ -1,11 +1,10 @@
 .background {
   background-image: url('https://res.cloudinary.com/dpz6vgbvz/image/upload/pexels-ivan-samkov-8504293_ae5l8v.jpg');
-  background-size: 1000px 1000px;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   vertical-align: top;
-  background-position-x: center;
-  width: 100vh;
-  height: 100vh;
+  background-position: center center;
+  // overflow: hidden;
 }
 
 .home {

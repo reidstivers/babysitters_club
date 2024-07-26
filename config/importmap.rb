@@ -2,7 +2,7 @@
 
 pin "application"
 pin "@hotwired/turbo-rails", to: "turbo.min.js"
-pin "@hotwired/stimulus", to: "stimulus.min.js"
+pin "@hotwired/stimulus", to: "https://ga.jspm.io/npm:@hotwired/stimulus@3.2.2/dist/stimulus.js"
 pin "@hotwired/stimulus-loading", to: "stimulus-loading.js"
 pin_all_from "app/javascript/controllers", under: "controllers"
 pin "bootstrap", to: "bootstrap.min.js", preload: true
@@ -25,3 +25,8 @@ pin "nanoid", to: "https://ga.jspm.io/npm:nanoid@3.3.7/index.browser.js"
 pin "subtag", to: "https://ga.jspm.io/npm:subtag@0.5.0/subtag.js"
 pin "suggestions", to: "https://ga.jspm.io/npm:suggestions@1.7.1/index.js"
 pin "xtend", to: "https://ga.jspm.io/npm:xtend@4.0.2/immutable.js"
+pin "@stimulus-components/carousel", to: "https://ga.jspm.io/npm:@stimulus-components/carousel@6.0.0/dist/stimulus-carousel.mjs"
+pin "swiper/bundle", to: "https://ga.jspm.io/npm:swiper@8.4.7/swiper-bundle.esm.js"
+pin "stimulus-carousel", to: "https://ga.jspm.io/npm:stimulus-carousel@5.0.1/dist/stimulus-carousel.mjs"
+pin "dom7", to: "https://ga.jspm.io/npm:dom7@4.0.6/dom7.esm.js"
+pin "ssr-window", to: "https://ga.jspm.io/npm:ssr-window@4.0.2/ssr-window.esm.js"

@@ -1,6 +1,5 @@
 <div class="container">
   <h1><i class="fa-solid fa-book-open" style="color: #c84209;"></i></h1>
-  <%= Time.zone.now %>
   <div class="booking-details">
     <div class="booking-container">
       <h2> From <%= @booking.start_at.strftime("%B %d, %I:%M %p") %></h2>
@@ -16,6 +15,16 @@
             <%= button_to "Cancel", @booking, method: :patch, params: { booking: {status: 3} }, class: "btn btn-danger status-btn", data: { turbo_confirm: "Are you sure?" } %>
           <% elsif @booking.status == 2 && @booking.end_at < Time.zone.now %>
             <%= button_to "Complete", @booking, method: :patch, params: { booking: {status: 4} }, class: "btn completed status-btn" %>
+          <% elsif @booking.status == 4 %>
+            <div data-controller="toggler">
+              <button data-action="click->toggler#fire" data-toggler-target="button" class="btn btn-outline-secondary status-btn"> Add a report? </button>
+              <div data-toggler-target="comments" class="d-none">
+                <%= simple_form_for @booking, html: { multipart: true } do |f| %>
+                  <%= f.input :comment %>
+                  <%= f.submit "Submit report", class: "btn status-btn" %>
+                <% end %>
+              </div>
+            </div>
           <% end %>
         </div>
       <% end %>

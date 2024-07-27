@@ -1,6 +1,8 @@
 <h1>Your Bookings</h1>
 <% if bookings.empty? %>
-    <p>You've made no bookings :(</p>
+  <p>You've made no bookings :(</p>
+  <p>Are you good with kids? Got some spare time? Create a listing now to get started!</p>
+  <%= link_to "Create a new listing", new_listing_path, class: 'btn btn-filter mb-3' %>
 <% else %>
   <div data-controller="bookings">
     <div class="bookings-filters">

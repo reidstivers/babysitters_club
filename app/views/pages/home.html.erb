@@ -27,31 +27,42 @@
           <% end %>
         </div>
       </div>
-<%= tag.div class: "swiper", data: {
-  controller: "carousel",
-  carousel_options_value: {
-    pagination: {
-      el: ".swiper-pagination"
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev"
-    },
-    effect: "coverflow"
-  }
-} do %>
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">Slide 1</div>
-    <div class="swiper-slide">Slide 2</div>
-    <div class="swiper-slide">Slide 3</div>
-  </div>
-  <div class="swiper-pagination"></div>
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-button-next"></div>
-  <div class="swiper-scrollbar"></div>
-<% end %>
-
-<style type="text/css" media="screen">.swiper-slide { height: 20rem; background-color: pink; display: grid; place-items: center; }</style>
+      <%= tag.div class: "swiper", data: {
+        controller: "carousel",
+        carousel_options_value: {
+          pagination: {
+            el: ".swiper-pagination"
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev"
+          },
+          effect: "coverflow"
+        }
+      } do %>
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><%= image_tag 'logo.png' %></div>
+          <div class="swiper-slide">Slide 2</div>
+          <div class="swiper-slide">Slide 3</div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-scrollbar"></div>
+      <% end %>
     </div>
   </div>
 </div>
+
+<style type="text/css" >
+  .swiper-wrapper {
+    width: 400px;
+  }
+  .swiper-slide {
+    height: 20rem;
+    background-color: pink;
+    display: grid;
+    place-items: center;
+    width: 400;
+    }
+</style>

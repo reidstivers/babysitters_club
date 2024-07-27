@@ -1,13 +1,21 @@
 .background {
   background-image: url('https://res.cloudinary.com/dpz6vgbvz/image/upload/pexels-ivan-samkov-8504293_ae5l8v.jpg');
-  background-size: 1000px 1000px;
+  background-size: 100vh;
   background-repeat: no-repeat;
   vertical-align: top;
   background-position-x: center;
-  width: 100vh;
-  height: 100vh;
 }
 
+.swiper-wrapper {
+  width: 400px;
+}
+
+.swiper-slide {
+  height: 20rem;
+  background-image: "logo.png";
+  display: grid;
+  place-items: center;
+}
 .home {
   // background-color: #f5f5f5;
   display: flex;

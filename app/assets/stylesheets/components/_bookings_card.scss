@@ -17,22 +17,30 @@
   padding: 10px 20px 20px 20px;
   font-size: 36px;
   position: absolute;
+  pointer-events: none;
 }
 
-.booking-status {
-
+.booking-body {
+  margin-top:40px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
 }
 
 .booking-detail {
-  margin-top:40px;
-  padding: 20px;
+  // margin-top:40px;
+  // padding: 20px;
   display: flex;
   // flex-direction: column;
   // flex: 1 0 auto;
   align-content: center;
 }
 
-.booking-detail > a {
+.booking-text {
+  text-align: center;
+}
+
+.booking-text > a {
   text-decoration: none;
 }
 

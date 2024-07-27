@@ -35,6 +35,7 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 .booking-card > img {
+  max-height: 300px;
   height: auto;
   width: 100%;
   object-fit: cover;
@@ -87,6 +88,14 @@
 }
 
 //filter buttons
+.btn-filter {
+  background-color: $btn-filter;
+  color:white;
+  &:hover {
+    background-color: $btn-filter-hover;
+    color:white;
+    }
+}
 .btn-all-bookings {
   background-color: $btn-all;
   &:hover {

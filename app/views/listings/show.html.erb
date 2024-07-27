@@ -18,9 +18,11 @@
           <p>Not Currently Available</p>
         <% end %>
         <div>
-          <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
-          <h3>Certifications</h3>
-          <p><%= @listing.user.qualification %></p>
+          <% if @listing.user.qualification.present? %>
+            <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+            <h3>Certifications</h3>
+            <p><%= @listing.user.qualification %></p>
+          <% end %>
         </div>
       </div>
     </div>
@@ -74,7 +76,14 @@
 
 <div class="reviews-container">
   <h1>Reviews</h1>
+  <% @listing.reviews.each do |review| %>
+  <div class="review">
+    <h2 class="review-user"><%= review.user.first_name %></h2>
+    <p class="review-comment"><%= review.comment %></p>
+  </div>
+  <% end %>
 </div>
+
 
 <%# <div> %>
 <%# @listing.bookings.each do |booking|%>

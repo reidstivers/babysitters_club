@@ -1,6 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :listing
+  has_many :reviews, dependent: :destroy
   before_save :calculate_fee
 
   validates :start_at, :end_at, presence: true

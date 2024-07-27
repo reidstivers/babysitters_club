@@ -1,6 +1,7 @@
 class Listing < ApplicationRecord
   belongs_to :user
   has_many :bookings
+  has_many :reviews, through: :bookings
   has_many :availabilities, inverse_of: :listing, dependent: :destroy
   has_many_attached :photos
   geocoded_by :location

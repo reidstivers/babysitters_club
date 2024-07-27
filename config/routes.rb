@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   root "pages#home"
   get 'my-listings', to: 'listings#sitter_listings'
   resources :listings do
-    resources :bookings
+    resources :bookings do
+      resources :reviews, only: [:new, :create]
+    end
   end
   resources :bookings
 end

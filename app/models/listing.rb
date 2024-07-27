@@ -1,6 +1,7 @@
 class Listing < ApplicationRecord
   belongs_to :user
   has_many :bookings
+  has_many :reviews, through: :bookings
   has_many :availabilities, inverse_of: :listing, dependent: :destroy
   accepts_nested_attributes_for :availabilities, allow_destroy: true
   has_many_attached :photos

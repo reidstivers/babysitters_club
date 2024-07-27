@@ -1,6 +1,7 @@
 .reviews-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column; /* Stack reviews vertically */
+  align-items: center; /* Center align the content */
   background: $card-bg;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 20px;
@@ -10,5 +11,28 @@
 
   h1 {
     text-align: center;
+    margin-bottom: 20px; /* Add space below the heading */
+  }
+
+  .review {
+    background: #fff; /* Background for each review */
+    border: 1px solid #ddd; /* Border to distinguish reviews */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Subtle shadow for reviews */
+    padding: 15px;
+    margin-bottom: 15px; /* Space between reviews */
+    width: 100%; /* Full width within the container */
+    max-width: 600px; /* Limit the width for better readability */
+
+    .review-user {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .review-comment {
+      font-size: 1em;
+      line-height: 1.5; /* Improved readability */
+    }
   }
 }

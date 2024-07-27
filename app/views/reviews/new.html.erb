@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>New Review</h1>
+
+  <%= simple_form_for [@listing, @booking, @review] do |f| %>
+    <%= f.input :comment, as: :text %>
+    <div class="actions">
+      <%= f.submit "Create Review", class: "pink-button"%>
+    </div>
+  <% end %>
+</div>

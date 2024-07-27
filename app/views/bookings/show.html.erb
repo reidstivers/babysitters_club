@@ -2,6 +2,7 @@
   <h1><i class="fa-solid fa-book-open" style="color: #3F5B5C;"></i></h1>
   <div class="booking-details">
     <div class="booking-container">
+      <h1> <%= @booking.user.full_name %> </h1>
       <h2> From <%= @booking.start_at.strftime("%B %d, %I:%M %p") %></h2>
       <h2> to <%= @booking.end_at.strftime("%B %d, %I:%M %p") %> </h2>
       <h2> Total fee: $<%= @booking.fee %> </h2>

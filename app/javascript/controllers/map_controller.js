@@ -25,12 +25,17 @@ export default class extends Controller {
   #addMarkersToMap() {
     console.log("Placing markers!", this.markersValue)
     this.markersValue.forEach((marker) => {
+      const popup = new mapboxgl.Popup().setHTML(marker.info_window)
       new mapboxgl.Marker()
         .setLngLat([marker.lng, marker.lat])
+        .setPopup(popup)
         .addTo(this.map)
     })
   }
 
+  // This function will fit the map to all the markers.
+  // It may be better to zoom in on the User's set location
+  //If we do that, this function will need to be updated or it becomes irrelevant
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))

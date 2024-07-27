@@ -14,7 +14,9 @@ class ListingsController < ApplicationController
     @markers = @listings.geocoded.map do |listing|
       {
         lat: listing.latitude,
-        lng: listing.longitude
+        lng: listing.longitude,
+        # This adds an info window for each marker on the map
+        info_window: render_to_string(partial: "popup", locals: {listing: listing})
       }
     end
   end

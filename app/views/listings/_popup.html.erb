@@ -1,3 +1,8 @@
-<h1><%= listing.title %></h1>
-<p><%= listing.location %></p>
-<p><%= listing.description %> </p>
+<div class="info-window">
+  <%=  link_to listing_path(listing), style: "text-decoration: none; color: inherit;" do %>
+    <h1><%= listing.title %></h1>
+  <% end %>
+    <p>Location:<%= listing.location %></p>
+    <p>Description:<%= listing.description %> </p>
+    <p> Hosted by: <%= listing.user.full_name %> </p>
+</div>

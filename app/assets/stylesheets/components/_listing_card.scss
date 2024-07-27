@@ -32,3 +32,9 @@
   object-fit: contain;
   max-height: 300px;
 }
+
+.info-window {
+  background-color: $card-bg;
+  object-fit: contain;
+  border-radius: 8px;
+}

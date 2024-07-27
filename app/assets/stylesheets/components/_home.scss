@@ -1,30 +1,41 @@
 .background {
   background-image: url('https://res.cloudinary.com/dpz6vgbvz/image/upload/pexels-ivan-samkov-8504293_ae5l8v.jpg');
-  background-size: 1000px 1000px;
+  background-size: 800px 800px; /* Fixed size for the photo */
+  background-position: center; /* Center the image */
   background-repeat: no-repeat;
-  vertical-align: top;
-  background-position-x: center;
-  width: 100vh;
-  height: 100vh;
+  width: 1000px; /* Fixed width */
+  height: 1000px; /* Fixed height */
+  position: relative;
+  margin: 0 auto; /* Center the photo horizontally */
+}
+
+.background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 100%); /* Gradient fade effect */
+  z-index: 1; /* Ensure the gradient is on top of the background image */
+  border-radius: 15px; /* Slightly rounded corners */
 }
 
 .home {
-  // background-color: #f5f5f5;
+  position: relative; /* Positioning context for the overlay */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   padding: 20px;
-  align-items: center;
   margin-top: 200px;
-  // background-color: white;
+  z-index: 2; /* Ensure content is above the gradient */
 }
 
 .home h2 {
   font-size: 36px;
   font-weight: bold;
   margin: 0;
-  justify-content: center;
   text-shadow: 0 4px 8px #dddddd;
 }
 
@@ -42,22 +53,14 @@
   padding: 5px;
   background-color: white;
   opacity: 70%;
+  border-radius: 15px; /* Slightly rounded edges */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Optional: Add a shadow for depth */
 }
 
-.parent {
+.parent, .sitter {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   margin: 2px;
   background-color: white;
-  opacity: 100%  !important;
+  opacity: 100% !important;
   align-items: center;
-  vertical-align: bottom;
-}
-
-.sitter {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  margin: 2px;
-  background-color: white;
-  opacity: 100%  !important;
-  align-items: center;
-  vertical-align: middle;
 }

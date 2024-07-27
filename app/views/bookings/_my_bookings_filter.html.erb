@@ -4,11 +4,11 @@
 <% else %>
   <div data-controller="my-bookings">
     <div class="bookings-filters">
-      <%= link_to "All Bookings", bookings_path, class: "btn btn-primary status-btn", data: { action: "click->my-bookings#toggle", status: "all" } %>
-      <%= link_to "Requested Bookings", bookings_path(status: 1), class: "btn pending status-btn", data: { action: "click->my-bookings#toggle", status: "pending"} %>
-      <%= link_to "Confirmed Bookings", bookings_path(status: 2), class: "btn confirmed status-btn", data: { action: "click->my-bookings#toggle", status: "confirmed"} %>
-      <%= link_to "Declined Bookings", bookings_path(status: 3), class: "btn declined status-btn", data: { action: "click->my-bookings#toggle", status: "declined"} %>
-      <%= link_to "Completed Bookings", bookings_path(status: 4), class: "btn completed status-btn", data: { action: "click->my-bookings#toggle", status: "completed"} %>
+      <%= link_to "All Bookings", bookings_path, class: "btn btn-all-bookings status-btn", data: { action: "click->my-bookings#toggle", status: "all" } %>
+      <%= link_to "Requested Bookings", bookings_path(status: 1), class: "btn btn-pending status-btn", data: { action: "click->my-bookings#toggle", status: "pending"} %>
+      <%= link_to "Confirmed Bookings", bookings_path(status: 2), class: "btn btn-confirmed status-btn", data: { action: "click->my-bookings#toggle", status: "confirmed"} %>
+      <%= link_to "Declined Bookings", bookings_path(status: 3), class: "btn btn-declined status-btn", data: { action: "click->my-bookings#toggle", status: "declined"} %>
+      <%= link_to "Completed Bookings", bookings_path(status: 4), class: "btn btn-completed status-btn", data: { action: "click->my-bookings#toggle", status: "completed"} %>
     </div>
     <div data-my-bookings-target="all" >
       <%= render partial: "list", locals: {bookings: bookings} %>

@@ -2,19 +2,21 @@
 <% bookings = @bookings.select { |booking| booking.user_id == current_user.id } %>
 <%# Filtering for bookings made on user's listings %>
 <% my_bookings = @bookings.select { |booking| booking.listing.user_id == current_user.id } %>
-<div data-controller="bookings-pages">
-  <% if current_user.listings.any? %>
-    <div class="bookings-filters">
-      <button class="btn status-btn" data-action="click->bookings-pages#toggle" data-target="bookings"> Your Bookings </button>
-      <button class="btn status-btn" data-action="click->bookings-pages#toggle" data-target="myBookings"> Bookings with you </button>
+<div class="container">
+  <div data-controller="bookings-pages">
+    <% if current_user.listings.any? %>
+      <div class="bookings-filters">
+        <button class="btn btn-filter status-btn" data-action="click->bookings-pages#toggle" data-target="bookings"> Your Bookings </button>
+        <button class="btn btn-filter status-btn" data-action="click->bookings-pages#toggle" data-target="myBookings"> Bookings with you </button>
+      </div>
+    <% end %>
+    <%# Displays user's bookings %>
+    <div data-bookings-pages-target="bookings">
+      <%= render partial: "bookings_filter", locals: {bookings: bookings} %>
     </div>
-  <% end %>
-  <%# Displays user's bookings %>
-  <div data-bookings-pages-target="bookings">
-    <%= render partial: "bookings_filter", locals: {bookings: bookings} %>
-  </div>
-  <%# Displays bookings made on user's listings %>
-  <div data-bookings-pages-target="myBookings" class="d-none">
-    <%= render partial: "my_bookings_filter", locals: {bookings: my_bookings} %>
+    <%# Displays bookings made on user's listings %>
+    <div data-bookings-pages-target="myBookings" class="d-none">
+      <%= render partial: "my_bookings_filter", locals: {bookings: my_bookings} %>
+    </div>
   </div>
 </div>

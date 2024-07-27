@@ -32,12 +32,12 @@
       <ul class="d-flex flex-wrap">
         <% @listing.bookings.each do |booking| %>
           <li class="card m-2">
-            <p>Starts on: <%= booking.start_at %></p>
-            <p>Ends on: <%= booking.end_at %></p>
-            <%= render partial: "bookings/status", locals: {booking: booking} %>
+            <p>Starts on: <%= booking.start_at.strftime("%B %d, %Y %H:%M") %>
+            <br />Ends on: <%= booking.end_at.strftime("%B %d, %Y %H:%M") %></p>
             <%= link_to booking_path(booking) do %>
               <i class="fa-solid fa-calendar-check fa-2x" style="color:grey"></i>
             <% end %>
+            <%= render partial: "bookings/status", locals: {booking: booking} %>
           </li>
         <% end %>
       </ul>
@@ -66,11 +66,11 @@
       </div>
     </div>
   <% end %>
+</div>
 
-  <div class="d-flex justify-content-center align-items-center">
+  <div class="d-flex justify-content-center align-items-center m-3">
     <%= link_to "Back to Listings", root_path, class: 'btn btn-outline-secondary mb-3' %>
   </div>
-</div>
 
 <div class="reviews-container">
   <h1>Reviews</h1>

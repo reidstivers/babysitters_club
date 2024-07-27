@@ -5,16 +5,20 @@
       <div class="booking-header">
         <p>Starts on: <%= booking.start_at.strftime('%Y/%m/%d %H:%M') %> -> Ends on: <%= booking.end_at.strftime('%Y/%m/%d %H:%M') %> </p>
       </div>
-      <div class="booking-detail">
-      <% booking.listing.photos.each do |photo| %>
-        <%= image_tag photo, class: "booking-image" %>
-      <% end %>
-      <%= link_to booking_path(booking) do %>
-        <h4>
-          <span class="link-secondary"><%= booking.listing.title %></span>
-          <i class="fa-solid fa-book-open" style="color:$c84209'"></i>
-        </h4>
-      <% end %>
+      <div class="booking-body">
+        <div class="booking-detail">
+        <% booking.listing.photos.each do |photo| %>
+          <%= image_tag photo, class: "booking-image" %>
+        <% end %>
+        </div>
+        <div class="booking-text">
+          <%= link_to booking_path(booking) do %>
+            <h3>
+              <span class="link-secondary"><%= booking.listing.title %></span>
+              <i class="fa-solid fa-book-open" style="color:#3f5b5d;"></i>
+            </h3>
+          <% end %>
+        </div>
       </div>
     </div>
   <% end %>

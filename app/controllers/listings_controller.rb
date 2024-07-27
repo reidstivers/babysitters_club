@@ -16,7 +16,8 @@ class ListingsController < ApplicationController
         lat: listing.latitude,
         lng: listing.longitude,
         # This adds an info window for each marker on the map
-        info_window: render_to_string(partial: "popup", locals: {listing: listing})
+        info_window: render_to_string(partial: "popup", locals: {listing: listing}),
+        marker_html: "<i class='fa-solid fa-baby-carriage fa-beat' style='color: #e44611;'></i>"
       }
     end
   end

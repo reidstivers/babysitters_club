@@ -9,6 +9,8 @@ Bundler.require(*Rails.groups)
 module BabysittersClub
   class Application < Rails::Application
     config.action_controller.raise_on_missing_callback_actions = false if Rails.version >= "7.1.0"
+    config.time_zone = "Tokyo"
+    config.active_record.default_timezone = :local
     config.generators do |generate|
       generate.assets false
       generate.helper false

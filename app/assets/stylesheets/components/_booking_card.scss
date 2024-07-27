@@ -86,20 +86,55 @@
   height: auto;
 }
 
+//filter buttons
+.btn-all-bookings {
+  background-color: $btn-all;
+  &:hover {
+  background-color: $btn-all-hover;
+  }
+}
+
 .pending {
-  background-color: yellow;
+  background-color: $btn-pending;
+}
+.btn-pending {
+  background-color: $btn-pending;
+  &:hover {
+    background-color: $btn-pending-hover;
+  }
 }
 
 .confirmed {
-  background-color: green;
+  background-color: $btn-confirmed;
+}
+
+.btn-confirmed {
+  background-color: $btn-confirmed;
+  &:hover {
+    background-color: $btn-confirmed-hover;
+  }
 }
 
 .declined {
-  background-color: red;
+  background-color: $btn-declined;
+}
+
+.btn-declined {
+  background-color: $btn-declined;
+  &:hover {
+    background-color: $btn-declined-hover;
+  }
 }
 
 .completed {
-  background-color: gray;
+  background-color: $btn-completed;
+}
+
+.btn-completed {
+  background-color: $btn-completed;
+  &:hover {
+    background-color: $btn-completed-hover;
+  }
 }
 
 .status-button-container {

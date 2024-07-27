@@ -1,6 +1,6 @@
 <% if bookings.any?%>
   <% bookings.each do |booking| %>
-    <li class="bookings">
+    <div class="bookings">
       <%= render partial: "status", locals: {booking: booking}, class: "booking-status" %>
       <div class="booking-header">
         <p>Starts on: <%= booking.start_at.strftime('%Y/%m/%d %H:%M') %> -> Ends on: <%= booking.end_at.strftime('%Y/%m/%d %H:%M') %> </p>
@@ -16,6 +16,6 @@
         </h4>
       <% end %>
       </div>
-    </li>
+    </div>
   <% end %>
 <% end %>

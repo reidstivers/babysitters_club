@@ -13,7 +13,7 @@ export default class extends Controller {
     console.log("Map connected!")
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10",
+      style: "mapbox://styles/mapbox/streets-v10", // Can change using urls from Mapbox Studio
       zoom: 9
     });
     this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
@@ -26,8 +26,6 @@ export default class extends Controller {
     console.log("Placing markers!", this.markersValue)
     this.markersValue.forEach((marker) => {
       const customMarker = document.createElement('div')
-      customMarker.style.height = "24px"
-      customMarker.style.width = "24px"
       customMarker.innerHTML = marker.marker_html
       customMarker.backgroundSize = "contain"
       const popup = new mapboxgl.Popup().setHTML(marker.info_window)

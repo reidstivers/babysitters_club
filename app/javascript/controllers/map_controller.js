@@ -10,11 +10,12 @@ export default class extends Controller {
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
-
+    console.log("Map connected!")
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10"
-    })
+      style: "mapbox://styles/mapbox/streets-v10", // Can change using urls from Mapbox Studio
+      zoom: 9
+    });
     this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl }))
     this.#addMarkersToMap()
@@ -22,26 +23,25 @@ export default class extends Controller {
   }
 
   #addMarkersToMap() {
+    console.log("Placing markers!", this.markersValue)
     this.markersValue.forEach((marker) => {
-      new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat ])
-        .addTo(this.map)
-
-      // Create a HTML element for your custom marker
-      const customMarker = document.createElement("div")
+      const customMarker = document.createElement('div')
       customMarker.innerHTML = marker.marker_html
-
-      // Pass the element as an argument to the new marker
-      new mapboxgl.Marker(customMarker)
+      customMarker.backgroundSize = "contain"
+      const popup = new mapboxgl.Popup().setHTML(marker.info_window)
+      new mapboxgl.Marker({element: customMarker})
         .setLngLat([marker.lng, marker.lat])
         .setPopup(popup)
         .addTo(this.map)
     })
   }
 
+  // This function will fit the map to all the markers.
+  // It may be better to zoom in on the User's set location
+  //If we do that, this function will need to be updated or it becomes irrelevant
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
+    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 10 })
   }
 }

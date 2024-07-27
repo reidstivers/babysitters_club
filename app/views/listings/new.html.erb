@@ -3,9 +3,9 @@
   <%= simple_form_for @listing, html: { multipart: true } do |f| %>
     <%= f.input :title %>
     <%= f.input :description %>
-    <%= f.input :location,
-    input_html: {data: {address_autocomplete_target: "location"}, class: "d-none"},
-    wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+     <%= f.input :location,
+        input_html: {data: {address_autocomplete_target: "location"}, class: "d-none"},
+        wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
     %>
     <%= f.input :fee %>
       <%= f.simple_fields_for :availabilities do |availability_fields| %>

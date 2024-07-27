@@ -2,10 +2,11 @@ class Listing < ApplicationRecord
   belongs_to :user
   has_many :bookings
   has_many :availabilities, inverse_of: :listing, dependent: :destroy
-  has_many_attached :photos
-  geocoded_by :location
-  after_validation :geocode, if: :will_save_change_to_location?
   accepts_nested_attributes_for :availabilities, allow_destroy: true
+  has_many_attached :photos
+
+  geocoded_by :location
+  after_validation :geocode, if: :location_changed?
 
   include PgSearch::Model
   # Implements pg_search gem to allow for search bar functionality

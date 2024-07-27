@@ -10,6 +10,16 @@ class ListingsController < ApplicationController
     else
       @listings = Listing.all
     end
+    # create markers for use on the map
+    @markers = @listings.geocoded.map do |listing|
+      {
+        lat: listing.latitude,
+        lng: listing.longitude,
+        # This adds an info window for each marker on the map
+        info_window: render_to_string(partial: "popup", locals: {listing: listing}),
+        marker_html: "<i class='fa-solid fa-baby-carriage fa-beat' style='color: #e44611; font-size: 24px;'></i>"
+      }
+    end
   end
 
   def sitter_listings
@@ -24,7 +34,6 @@ class ListingsController < ApplicationController
       @markers = [{
         lat: @listing.latitude,
         lng: @listing.longitude,
-        marker_html: render_to_string(partial: "listings/marker")
       }]
     else
       @markers = []

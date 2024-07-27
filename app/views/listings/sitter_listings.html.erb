@@ -2,8 +2,10 @@
 <h1> My Listings </h1>
 <%= link_to "Create a  New Listing", new_listing_path, class: "btn btn-primary" %>
 <% if @listings.empty? %>
-  <p>You have no listings :(</p>
-  <p>Are you good with kids? Got some spare time? Create a listing now to get started!</p>
+<div class="no-listings-container">
+  <p class="no-listings-message">You have no listings :(</p>
+  <p class="call-to-action">Are you good with kids? Got some spare time? Create a listing now to get started!</p>
+</div>
 <% else %>
   <!-- Display the listings here -->
   <% @listings.each do |listing| %>

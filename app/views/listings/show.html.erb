@@ -17,6 +17,11 @@
         <% else %>
           <p>Not Currently Available</p>
         <% end %>
+        <div>
+          <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+          <h3>Certifications</h3>
+          <p><%= @listing.user.qualification %></p>
+        </div>
       </div>
     </div>
   </div>
@@ -31,7 +36,7 @@
             <p>Ends on: <%= booking.end_at %></p>
             <%= render partial: "bookings/status", locals: {booking: booking} %>
             <%= link_to booking_path(booking) do %>
-              <i class="fa-solid fa-calendar-check fa-2x"></i>
+              <i class="fa-solid fa-calendar-check fa-2x" style="color:grey"></i>
             <% end %>
           </li>
         <% end %>
@@ -65,6 +70,10 @@
   <div class="d-flex justify-content-center align-items-center">
     <%= link_to "Back to Listings", root_path, class: 'btn btn-outline-secondary mb-3' %>
   </div>
+</div>
+
+<div class="reviews-container">
+  <h1>Reviews</h1>
 </div>
 
 <%# <div> %>
